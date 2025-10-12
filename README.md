@@ -9,3 +9,6 @@ Jimena - noaguevg@oregonstate.edu
 Heidi - lyhe@oregonstate.edu
 
 Adithya - nairadi@oregonstate.edu
+
+#License
+Pending Partner confirmation
