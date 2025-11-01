@@ -5,6 +5,23 @@
 ## Team Members & Roles
 
 Describe each member’s role, primary responsibilities, backups/rotation plan, and contact info.
+### Lucas Gomes
+Role - 
+Primary responsibilities -
+Backup - 
+Contact - gomesl@oregonstate.edu
+
+### Jimena 
+Role - 
+Primary responsibilities -
+Backup - 
+Contact -
+
+### Adithya
+Role - 
+Primary responsibilities -
+Backup - 
+Contact -
 
 ## Decision-Making Model
 

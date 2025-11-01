@@ -4,9 +4,7 @@ Cross platform web app that uses AI to process open source textbooks and aid stu
 ### Team members
 Lucas Gomes - gomesl@oregonstate.edu
 
-Jimena - noaguevg@oregonstate.edu
-
-Heidi - lyhe@oregonstate.edu
+Jimena - noaguevg@oregonstate.ed
 
 Adithya - nairadi@oregonstate.edu
 
