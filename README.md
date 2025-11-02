@@ -6,8 +6,6 @@ Lucas Gomes - gomesl@oregonstate.edu
 
 Jimena - noaguevg@oregonstate.edu
 
-Heidi - lyhe@oregonstate.edu
-
 Adithya - nairadi@oregonstate.edu
 
 # License
