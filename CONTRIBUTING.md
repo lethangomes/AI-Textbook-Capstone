@@ -6,6 +6,17 @@ How to set up, code, test, review, and release so contributions meet our Definit
 
 Reference the project/community behavior expectations and reporting process.
 
+### Behavior expectations
+* Be respectful 
+    * Feedback should be constructive and focused on improving the end product
+    * Don't dismiss ideas out of hand
+* Be honest
+* Be inclusive. Make sure everyone has a chance to share their opinions during meetings or other important discussions.
+
+### Reporting process
+* If someone has been acting disrespectfully or violates one of our policies, message them first to discuss your issues with their actions
+* If this fails to resolve the issue, bring up the issue at the next meeting for the group to discuss.
+
 ## Getting Started
 
 List prerequisites, setup steps, environment variables/secrets handling, and how to run the app locally.
@@ -20,6 +31,7 @@ List prerequisites, setup steps, environment variables/secrets handling, and how
 * Clone the repo using ```git clone https://github.com/lethangomes/AI-Textbook-Capstone.git```
 * cd into AI-Textnook-Capstone/AI-Textbook-App
 * run ```npm install```
+* run ```npx expo install prettier eslint-config-prettier eslint-plugin-prettier --dev``` on mac or ```npx expo install prettier eslint-config-prettier eslint-plugin-prettier "--" --dev``` on windows to install prettier
 * run one of the following commands to start the app
     * ```npm run start``` - Brings up QR code for running app on mobile and a menu to switch to android/iOS emulation
     * ```npm run ios``` - requires iOS emulator
@@ -29,6 +41,8 @@ List prerequisites, setup steps, environment variables/secrets handling, and how
 ## Branching & Workflow
 
 Describe the workflow (e.g., trunk-based or GitFlow), default branch, branch naming, and when to rebase vs. merge.
+
+
 
 ## Issues & Planning
 
@@ -42,25 +56,64 @@ State the convention (e.g., Conventional Commits), include examples, and how to 
 
 Name the formatter/linter, config file locations, and the exact commands to check/fix locally.
 
+We are using ESLint and Prettier for formatting/linting. The config file is ```./AI-textbook-App/eslint.config.js```. To check linting, run ```npx expo lint```.
+
 ## Testing
 
 Define required test types, how to run tests, expected coverage thresholds, and when new/updated tests are mandatory.
+
+We are still deciding on a testing solution, but we intend to have the following tests:
+* Unit tests
+    * Should be added whenever a new feature is added
+    * Should be updated whenever bugs are found with existing features, or existing features are altered.
+* End to End tests
+    * Should be added whenever new UI elements are introduced
+    * Should be updated whenever UI is altered significantly
 
 ## Pull Requests & Reviews
 
 Outline PR requirements (template, checklist, size limits), reviewer expectations, approval rules, and required status checks.
 
+Pull request template is in PULL_REQUEST_TEMPLATE.md and includes a self check checklist.
+
+### Reviewer Expectations
+* Review should be conducted within 24 hours of PR submission.
+* Review should be constructive and respectful, focusing on ensuring the quality of the end product.
+* If PR is rejected, reviewer must cite specific reasons for rejection and potential ways to fix any issues.
+
+### Approval rules
+* For a PR to be approved, it must pass all tests and be reviewed by at least one other group member.
+* Should also correctly follow PR template
+
+
 ## CI/CD
 
 Link to pipeline definitions, list mandatory jobs, how to view logs/re-run jobs, and what must pass before merge/release.
+
+We do not currently have CI jobs set up, but we intend to have jobs for running unit tests, linter, security scan, and checking formatting on pull request.
 
 ## Security & Secrets
 
 State how to report vulnerabilities, prohibited patterns (hard-coded secrets), dependency update policy, and scanning tools.
 
+### Reporting vulnerabilities
+Any discovered vulnerabilities should be brought up at the next meeting. If vulnerability is critical an emergency meeting should be held as soon as possible.
+
+### Prohibited patterns
+* No secrets should be hard coded. All secrets should be in environment variables or .env files. If stored in a file, the file should be in .gitignore
+
+### Scanning tools
+We intend to use githubs builtin secret scanner
+
 ## Documentation Expectations
 
 Specify what must be updated (README, docs/, API refs, CHANGELOG) and docstring/comment standards.
+
+### Docstring/Comment standards
+All functions should have comments above them with
+* A brief description of what they do
+* All input arguments and any constraints they may have
+* Function output
 
 ## Release Process
 
