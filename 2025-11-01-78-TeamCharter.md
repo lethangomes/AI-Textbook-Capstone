@@ -27,6 +27,10 @@ Contact -  nairadi@oregonstate.edu
 
 State how decisions are made (e.g., consent/majority), quorum, tie-break rules, and which decisions need instructor/partner input.
 
+Before making a decision that affects only one other group members work, they should contact that group member and discuss the decision. Only go forward once both of you agree on direction.
+
+If the decision would have an impact on multiple group members work, or the app as a whole it should be brought up at the next meeting for a full discussion with the group. Majority vote is needed to move forward with the issue. Project mentor should be involved in these decisions, and may vote as well. If there is a tie, reconvene after at least 24 hours to vote again. If no consensus is reached after 2 votes, project mentor breaks the tie.
+
 ## Meeting Cadence & Tools
 
 List recurring meetings (purpose, length, when/where), required tools (repo, tracker, chat, CI), and response-time expectations.
@@ -98,12 +102,47 @@ Enumerate required checks before merge (tests, code review, security/static anal
 
 Specify meeting norms (time zones, turn-taking, note-taking), accommodation process, and how barriers will be surfaced/addressed.
 
+### Time zone
+All meetings will use PST for time zone.
+
+### Norms
+At the beginning of the meeting, one person will be selected as note taker. The person taking notes will rotate each week. Notes should be saved in the shared google drive. Notes should include meeting takeaways, and todo lists for each member. Each member will briefly introduce what they want to discuss, prior to the meeting and an agenda will be formed from those topics.
+
+### Barriers
+If a member cannot make it to a meeting for any reason, they should let the group know as soon as possible. If possible, any agenda items they wished to discuss should be moved to the next meeting, or discussed online over discord or other asynchronous channels.   
+
+If a member is struggling with their work, they should bring up the issue at the next meeting and workloads should be reassessed. If necessary, reprioritize or cancel tasks in order to make sure no one is overworked.
+
 ## Policy Owners & Review Dates
 
 Assign an owner and next review date for each section; explain how updates are proposed and approved.
+
+### Update approval process
+If anyone wants to make an update to a policy, the changes should be presented to the rest of the group for review. Other group members should weigh in and suggest changes until everyone agrees on the policy. Once there is unanimous approval, update this document and make a pull request.
+
+### Policy owners and Review Dates
+* Decision-Making Model
+    * Owner: Lucas
+    * Review date: 11/16/2025
+* Risk Management & Escalation Path
+    * Owner: Lucas
+    * Review date: 11/16/2025
+* Conflict Resolution
+    * Owner: 
+    * Review date: 11/16/2025
+* Definition of Done (DoD) & Quality Gates
+    * Owner: 
+    * Review date: 11/16/2025
+* Accessibility
+    * Owner: 
+    * Review date: 11/16/2025
 
 ## Links & Artifacts
 
 Link to meeting agenda/notes template, CI dashboard, linter/formatter config, and any external docs referenced.
 
-ESLint/Prettier config: https://github.com/lethangomes/AI-Textbook-Capstone/blob/native-react-setup/AI-Textbook-App/eslint.config.js 
+**CI dashboard**: WIP
+
+**ESLint/Prettier config**: https://github.com/lethangomes/AI-Textbook-Capstone/blob/native-react-setup/AI-Textbook-App/eslint.config.js 
+
+**Meeting Agenda/Notes template:** WIP
