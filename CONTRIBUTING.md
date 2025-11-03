@@ -10,8 +10,10 @@ Reference the project/community behavior expectations and reporting process.
 * Be respectful 
     * Feedback should be constructive and focused on improving the end product
     * Don't dismiss ideas out of hand
-* Be honest
-* Be inclusive. Make sure everyone has a chance to share their opinions during meetings or other important discussions.
+* Be honest and constructive
+    * If disagreeind with an idea, or denying a merge request, provide constructive and concrete feedback on why you disagree/ are denying the request.
+* Be inclusive
+    * Make sure everyone has a chance to share their opinions during meetings or other important discussions.
 
 ### Reporting process
 * If someone has been acting disrespectfully or violates one of our policies, message them first to discuss your issues with their actions
@@ -56,15 +58,41 @@ Describe the workflow (e.g., trunk-based or GitFlow), default branch, branch nam
 Explain how to file issues, required templates/labels, estimation, and triage/assignment practices.
    We can use GitHub Issues to file issues. We will make an issue template.
    Labels:
-   * Bugs : A bug that needs to be fixed
-   * Feature : is a feature that needs to be implemented
-   * Task : Anything thats not a feature that needs to be done
+   * Bugs : Something broken or not working as expected that needs to be fixed
+   * Feature : is a new capability or enhancement that needs to be implemented
+   * Task : Anything that is not a feature that needs to be done
 
      Use GitHub Issues to assign priorities in the labels (low, medium, high).
 
 ## Commit Messages
 
 State the convention (e.g., Conventional Commits), include examples, and how to reference issues.
+
+Use consistent, descriptive commit messages that follow our agreed convention.
+
+Format
+```markdown
+   <type> (optional scope): <short description>
+
+```
+Types:
+- feat: a new feature
+- fix: a bug fix
+- style: code style changes (formatting, whitespace, etc.)
+- test: adding or updating tests
+- chore: maintenance tasks
+
+Examples:
+- feat(ui): add dark mode toggle
+- fix(auth): fix token expiration bug
+- docs: update contribution guide for reporting process
+
+Referencing issues
+
+Include the issue number in commit message when applicable:
+
+- fix: handle null user (#23)
+   
 
 ## Code Style, Linting & Formatting
 
@@ -116,12 +144,20 @@ Any discovered vulnerabilities should be brought up at the next meeting. If vuln
 ### Prohibited patterns
 * No secrets should be hard coded. All secrets should be in environment variables or .env files. If stored in a file, the file should be in .gitignore
 
+### Dependency update policy
+Dependencies should be reviewed and updated monthly or when a security advisory is issued. We can use tools like npm audit to check for vulnerabilities.
+
 ### Scanning tools
 We intend to use githubs builtin secret scanner
 
 ## Documentation Expectations
 
 Specify what must be updated (README, docs/, API refs, CHANGELOG) and docstring/comment standards.
+### Required Updates
+- README.md: update setup instructions, usage examples or project overview as affected.
+- docs/: add or edit documentation and onboarding guides.
+- API References: document new endpoints.
+- CHANGELOG.md: log all user-facing changes (e.g. features, bug fixes).
 
 ### Docstring/Comment standards
 All functions should have comments above them with
@@ -133,6 +169,29 @@ All functions should have comments above them with
 
 Describe versioning scheme, tagging, changelog generation, packaging/publishing steps, and rollback process.
 
+We will use Semantic Versioning (MAJOR.MINOR.PATCH) for all releases.
+### Release Steps
+1. Ensure all merged PRs are documented in CHANGELOG.md.
+2. Tag the release in GitHub using the following format: vX.Y.Z.
+3. Push the tag for release automation (once CI/CD is configured).
+4. Publish updated documentation if applicable.
+5. If a relaease causes critical issues, revert tag and initiate rollback process.
+
+### Rollback Process
+1. Revert the problematic commit or tag.
+2. Open a PR with a clear and detailed explanation of the issue.
+3. Notify the team and schedule a fix or patch release. 
+
 ## Support & Contact
 
 Provide maintainer contact channel, expected response windows, and where to ask questions.
+### Maintainser Contact
+Primary Maintainer: Lucas Gomes (gomesl@oregonstate.edu)
+Secondary Maintainer: Joseph Slade (joseph.slade@oregonstate.edu)
+
+### Response Expectations
+Expect replies whithin 48 hours during weekdays.
+
+### Where to Ask Questions
+- Use GitHub Issues for bug reports and feature requests.
+- Use GitHub Discussions for feedback and general questions or ideas.
