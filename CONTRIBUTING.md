@@ -41,12 +41,25 @@ List prerequisites, setup steps, environment variables/secrets handling, and how
 ## Branching & Workflow
 
 Describe the workflow (e.g., trunk-based or GitFlow), default branch, branch naming, and when to rebase vs. merge.
-
+  * We will use trunk-based workflow.
+  * Default is main.
+  * Before starting any work, always pull for latest changes.
+  * Create your own branch with branch naming based on the feature being worked on.
+  * Make small commits.
+  * Open pull request and make sure the additions pass all tests.
+  * Once approved, merge with main.
+  * Delete branch after the merge. 
 
 
 ## Issues & Planning
 
 Explain how to file issues, required templates/labels, estimation, and triage/assignment practices.
+   We can use GitHub Issues to file issues. We will make an issue template.
+   Labels:
+   * Bugs : A bug that needs to be fixed
+   * Feature : is a feature that needs to be implemented
+   * Task : Anything thats not a feature that needs to be done
+Use GitHub Issues to assign priorities in the labels (low, medium, high).
 
 ## Commit Messages
 
