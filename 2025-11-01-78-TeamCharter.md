@@ -6,10 +6,10 @@
 
 Describe each member’s role, primary responsibilities, backups/rotation plan, and contact info.
 ### Lucas Gomes
-Role -  Project Lead
-Primary responsibilities - Task management and setting up, configuring, and maintaining the CI/CD workflow. 
-Backup -  Jimena
-Contact - gomesl@oregonstate.edu
+- ** Role: ** Project Lead
+- Primary responsibilities - Task management and setting up, configuring, and maintaining the CI/CD workflow. 
+- Backup -  Jimena
+- Contact - gomesl@oregonstate.edu
 
 ### Jimena 
 Role -  Data Compliance Lead
