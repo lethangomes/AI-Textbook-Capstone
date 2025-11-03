@@ -59,7 +59,7 @@ Explain how to file issues, required templates/labels, estimation, and triage/as
    * Bugs : A bug that needs to be fixed
    * Feature : is a feature that needs to be implemented
    * Task : Anything thats not a feature that needs to be done
-Use GitHub Issues to assign priorities in the labels (low, medium, high).
+     Use GitHub Issues to assign priorities in the labels (low, medium, high).
 
 ## Commit Messages
 
