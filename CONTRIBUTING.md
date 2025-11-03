@@ -11,7 +11,7 @@ Reference the project/community behavior expectations and reporting process.
     * Feedback should be constructive and focused on improving the end product
     * Don't dismiss ideas out of hand
 * Be honest and constructive
-    * If disagreeind with an idea, or denying a merge request, provide constructive and concrete feedback on why you disagree/ are denying the request.
+    * If disagreeing with an idea, or denying a merge request, provide constructive and concrete feedback on why you disagree/ are denying the request.
 * Be inclusive
     * Make sure everyone has a chance to share their opinions during meetings or other important discussions.
 
