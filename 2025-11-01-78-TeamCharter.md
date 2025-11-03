@@ -6,21 +6,21 @@
 
 Describe each member’s role, primary responsibilities, backups/rotation plan, and contact info.
 ### Lucas Gomes
-Role -  
-Primary responsibilities -  
-Backup -  
+Role -  Project Lead
+Primary responsibilities - Task management and setting up, configuring, and maintaining the CI/CD workflow. 
+Backup -  Jimena
 Contact - gomesl@oregonstate.edu
 
 ### Jimena 
-Role -  
-Primary responsibilities -  
-Backup -   
+Role -  Data Compliance Lead
+Primary responsibilities -  Making sure any additions to the project are compliant with FERPA and university policies. 
+Backup -  Adithya
 Contact -  noaguevg@oregonstate.edu
 
 ### Adithya
-Role -   
-Primary responsibilities -  
-Backup -   
+Role -  Technical Lead
+Primary responsibilities -  Responsible for application structure and how it connects with the existing software. 
+Backup -   Lucas
 Contact -  nairadi@oregonstate.edu
 
 ## Decision-Making Model
@@ -95,8 +95,9 @@ Enumerate required checks before merge (tests, code review, security/static anal
 ### Steps before merging
 1. Add tests for new features and ensure your code passes all previous tests. Currently deciding which testing library will be used
 2. Submit PR where it will be run through CI jobs. CI jobs are not currently set up, but Lucas plans on implementing them in the future.
-3. If new features involve student data, check with project mentor or Jimena to ensure features follow FERPA and other guidelines
-4. Have at least one other team member review and approve code. 
+3. Update documentation.
+4. If new features involve student data, check with project mentor or Jimena to ensure features follow FERPA and other guidelines
+5. Have at least one other team member review and approve code. 
 
 ## Accessibility & Inclusion Practices
 
@@ -128,13 +129,13 @@ If anyone wants to make an update to a policy, the changes should be presented t
     * Owner: Lucas
     * Review date: 11/16/2025
 * Conflict Resolution
-    * Owner: 
+    * Owner: Jimena
     * Review date: 11/16/2025
 * Definition of Done (DoD) & Quality Gates
-    * Owner: 
+    * Owner: Jimena
     * Review date: 11/16/2025
 * Accessibility
-    * Owner: 
+    * Owner: Adithya
     * Review date: 11/16/2025
 
 ## Links & Artifacts
