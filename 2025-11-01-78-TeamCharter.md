@@ -6,22 +6,22 @@
 
 Describe each member’s role, primary responsibilities, backups/rotation plan, and contact info.
 ### Lucas Gomes
-- ** Role: ** Project Lead
-- Primary responsibilities - Task management and setting up, configuring, and maintaining the CI/CD workflow. 
-- Backup -  Jimena
-- Contact - gomesl@oregonstate.edu
+- **Role:** Project Lead
+- **Primary responsibilities:** Task management and setting up, configuring, and maintaining the CI/CD workflow. 
+- **Backup:** Jimena Noa-Guevara
+- **Contact:** gomesl@oregonstate.edu
 
-### Jimena 
-Role -  Data Compliance Lead
-Primary responsibilities -  Making sure any additions to the project are compliant with FERPA and university policies. 
-Backup -  Adithya
-Contact -  noaguevg@oregonstate.edu
+### Jimena Noa Guevara
+- **Role:**  Data Compliance Lead
+- **Primary responsibilities:**  Making sure any additions to the project are compliant with FERPA and university policies. 
+- **Backup:** Adithya
+- **Contact:** noaguevg@oregonstate.edu
 
 ### Adithya
-Role -  Technical Lead
-Primary responsibilities -  Responsible for application structure and how it connects with the existing software. 
-Backup -   Lucas
-Contact -  nairadi@oregonstate.edu
+- **Role:**  Technical Lead
+- **Primary responsibilities:**  Responsible for application structure and how it connects with the existing software. 
+- **Backup:**  Lucas
+- **Contact:**  nairadi@oregonstate.edu
 
 ## Decision-Making Model
 
