@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-
+    name: lint-and-test
     runs-on: ubuntu-latest
     defaults:
       run:
