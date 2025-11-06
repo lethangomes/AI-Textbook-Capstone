@@ -4,14 +4,14 @@ on:
   push:
     branches: ["**"]
 
-  jobs:
-    build_android_preview:
-      type: build # This job type creates a Development build for Android
-      params:
-        platform: android
-        profile: preview
-    build_ios_simulator_preview:
-      type: build # This job type creates a Development build for iOS
-      params:
-        platform: ios
-        profile: preview
+jobs:
+  build_android_preview:
+    type: build # This job type creates a Development build for Android
+    params:
+      platform: android
+      profile: preview
+  build_ios_simulator_preview:
+    type: build # This job type creates a Development build for iOS
+    params:
+      platform: ios
+      profile: preview
