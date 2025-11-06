@@ -5,18 +5,13 @@ on:
     branches: ["*"]
 
 jobs:
-  build_android_development:
+  build_android_preview:
     type: build # This job type creates a Development build for Android
     params:
       platform: android
-      profile: development
-  build_ios_device_development:
+      profile: preview
+  build_ios_simulator_preview:
     type: build # This job type creates a Development build for iOS
     params:
       platform: ios
-      profile: development
-  build_ios_simulator_development:
-    type: build # This job type creates a Development build for iOS
-    params:
-      platform: ios
-      profile: development-simulator
+      profile: preview
