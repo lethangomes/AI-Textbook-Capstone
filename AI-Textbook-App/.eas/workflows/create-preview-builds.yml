@@ -1,8 +1,8 @@
 name: Create Preview Builds
 
 on:
-  push:
-    branches: ["**"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
   build_android_preview:
@@ -14,4 +14,4 @@ jobs:
     type: build # This job type creates a Development build for iOS
     params:
       platform: ios
-      profile: preview
+      profile: preview-simulator
