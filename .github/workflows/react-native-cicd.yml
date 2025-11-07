@@ -2,7 +2,7 @@ name: React Native CI/CD
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, setupTesting]
     paths-ignore:
       - "**.md"
       - "LICENSE"
