@@ -1,6 +1,6 @@
 # this is an example test to see if maestro is working
 
-appId: dev.expo.AI-Textbook-App # This is an example app id. Replace it with your app id.
+appId: com.aitextbookcapstone.AITextbookApp
 ---
 - launchApp
 - assertVisible: 'Welcome!'
