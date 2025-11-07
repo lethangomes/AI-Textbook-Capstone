@@ -18,6 +18,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18'
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
     - name: Install Android SDK and tools
       run: |
         sdkmanager "platform-tools" "platforms;android-30" "system-images;android-30;google_apis;x86_64"
