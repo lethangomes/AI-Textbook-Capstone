@@ -39,7 +39,7 @@ jobs:
     - name: Run Maestro tests
       run: maestro test .maestro/ # Assuming your tests are in e2e/ directory
     - name: Upload test results (optional)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: maestro-test-results
