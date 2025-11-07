@@ -31,7 +31,6 @@ jobs:
     - name: Install Maestro CLI
       run: curl -Ls "https://get.maestro.mobile.dev" | bash
     - name: Build and install Android app
-    - name: Build and install Android app
       run: |
         npm install # If your app has JS dependencies
         npx expo prebuild # If using Expo managed workflow
