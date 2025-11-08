@@ -42,6 +42,11 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
+      - name: build app
+        run: npm install
+            npx expo prebuild 
+            cd AI-Textbook-App/android 
+
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -49,9 +54,7 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: npm install
-            npx expo prebuild 
-            cd AI-Textbook-App/android && ls && ./gradlew assembleDebug 
+          script: cd android && ./gradlew assembleDebug 
             adb install app/build/outputs/apk/debug/app-debug.apk # Install to emulator
             #MOVE THIS TO BEFORE THE EMULATOR AND JUST CD INTO ANDROID AND RUN GRADLEW
 # jobs:
