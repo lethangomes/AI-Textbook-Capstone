@@ -1,49 +1,70 @@
 name: Maestro CI Tests
 on: [push, pull_request]
+
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./AI-Textbook-App
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Set up Java
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
-    - name: Install Android SDK and tools
-      run: |
-        sdkmanager "platform-tools" "platforms;android-30" "system-images;android-30;google_apis;x86_64"
-        echo "y" | sdkmanager --licenses
-    - name: Create and start Android emulator
-      run: |
-        echo "no" | avdmanager create avd --name test_avd --package "system-images;android-30;google_apis;x86_64"
-        emulator -avd test_avd -no-window -no-audio -gpu swiftshader_indirect & disown
-        ls
-        timeout 300 adb wait-for-device
-        adb shell input keyevent 82 # Unlock screen
-    - name: Install Maestro CLI
-      run: curl -Ls "https://get.maestro.mobile.dev" | bash
-    - name: Build and install Android app
-      run: |
-        npm install # If your app has JS dependencies
-        npx expo prebuild # If using Expo managed workflow
-        cd android && ./gradlew assembleDebug # Build Android app
-        adb install app/build/outputs/apk/debug/app-debug.apk # Install to emulator
-    - name: Run Maestro tests
-      run: maestro test .maestro/ # Assuming your tests are in e2e/ directory
-    - name: Upload test results (optional)
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: maestro-test-results
-        path: maestro-results/ # Maestro generates results here
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+      - uses: dniHze/maestro-test-action@v1
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          arch: x86_64
+          ram-size: 2048M
+          target: default
+          script: maestro test --format=junit --output=report.xml --no-ansi .maestro
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     defaults:
+#       run:
+#         working-directory: ./AI-Textbook-App
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v3
+#     - name: Set up Java
+#       uses: actions/setup-java@v3
+#       with:
+#         distribution: 'temurin'
+#         java-version: '17'
+#     - name: Set up Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: '18'
+#     - name: Setup Android SDK
+#       uses: android-actions/setup-android@v3
+#     - name: Install Android SDK and tools
+#       run: |
+#         sdkmanager "platform-tools" "platforms;android-30" "system-images;android-30;google_apis;x86_64"
+#         echo "y" | sdkmanager --licenses
+#     - name: Create and start Android emulator
+#       run: |
+#         echo "no" | avdmanager create avd --name test_avd --package "system-images;android-30;google_apis;x86_64"
+#         emulator -avd test_avd -no-window -no-audio -gpu swiftshader_indirect & disown
+#         ls
+#         timeout 300 adb wait-for-device
+#         adb shell input keyevent 82 # Unlock screen
+#     - name: Install Maestro CLI
+#       run: curl -Ls "https://get.maestro.mobile.dev" | bash
+#     - name: Build and install Android app
+#       run: |
+#         npm install # If your app has JS dependencies
+#         npx expo prebuild # If using Expo managed workflow
+#         cd android && ./gradlew assembleDebug # Build Android app
+#         adb install app/build/outputs/apk/debug/app-debug.apk # Install to emulator
+#     - name: Run Maestro tests
+#       run: maestro test .maestro/ # Assuming your tests are in e2e/ directory
+#     - name: Upload test results (optional)
+#       uses: actions/upload-artifact@v4
+#       if: always()
+#       with:
+#         name: maestro-test-results
+#         path: maestro-results/ # Maestro generates results here
