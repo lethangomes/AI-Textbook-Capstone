@@ -49,7 +49,10 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: ./gradlew connectedCheck
+          script: npm install
+            npx expo prebuild 
+            cd android && ./gradlew assembleDebug 
+            adb install app/build/outputs/apk/debug/app-debug.apk # Install to emulator
 # jobs:
 #   test:
 #     runs-on: ubuntu-latest
