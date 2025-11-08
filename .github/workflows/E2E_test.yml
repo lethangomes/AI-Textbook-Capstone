@@ -51,7 +51,7 @@ jobs:
           disable-animations: true
           script: npm install
             npx expo prebuild 
-            cd android && ./gradlew assembleDebug 
+            cd android && ls && ./gradlew assembleDebug 
             adb install app/build/outputs/apk/debug/app-debug.apk # Install to emulator
 # jobs:
 #   test:
