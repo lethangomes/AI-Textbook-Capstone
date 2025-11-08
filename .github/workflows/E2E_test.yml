@@ -13,7 +13,6 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-      - uses: dniHze/maestro-test-action@v1
       - uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
