@@ -53,6 +53,7 @@ jobs:
             npx expo prebuild 
             cd AI-Textbook-App/android && ls && ./gradlew assembleDebug 
             adb install app/build/outputs/apk/debug/app-debug.apk # Install to emulator
+            #MOVE THIS TO BEFORE THE EMULATOR AND JUST CD INTO ANDROID AND RUN GRADLEW
 # jobs:
 #   test:
 #     runs-on: ubuntu-latest
