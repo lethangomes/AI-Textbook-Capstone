@@ -13,6 +13,8 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { login } from '../api/login/loginApi';
+
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -43,20 +45,23 @@ export default function AuthScreen() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isSignUpPasswordSecure, setIsSignUpPasswordSecure] = useState(true);
   const [isConfirmPasswordSecure, setIsConfirmPasswordSecure] = useState(true);
-  const onSignIn = async () => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        signInEmail,
-        signInPassword
-      );
-      
-      Alert.alert('Login Success', `Welcome back, ${userCredential.user.email}!`);
-      router.replace('/home');
 
-    } catch (error: any) {
-      Alert.alert('Login Failed', error.message);
-    }
+  const onSignIn = async () => {
+
+    login(signInEmail, signInPassword);
+    // try {
+    //   const userCredential = await signInWithEmailAndPassword(
+    //     auth,
+    //     signInEmail,
+    //     signInPassword
+    //   );
+      
+    //   Alert.alert('Login Success', `Welcome back, ${userCredential.user.email}!`);
+    //   router.replace('/home');
+
+    // } catch (error: any) {
+    //   Alert.alert('Login Failed', error.message);
+    // }
   };
 
   const onCreateAccount = async () => {
@@ -107,7 +112,6 @@ export default function AuthScreen() {
           {}
           <View style={styles.formCard}>
             {activeTab === 'signin' ? (
-              
               <>
                 <Text style={styles.formTitle}>Welcome back</Text>
                 <Text style={styles.formSubtitle}>Enter your email and password</Text>
