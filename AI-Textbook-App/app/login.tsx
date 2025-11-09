@@ -14,7 +14,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { login, register } from '../api/login/loginApi';
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function AuthScreen() {
   const router = useRouter();
@@ -22,7 +22,7 @@ export default function AuthScreen() {
   const [signInUsername, setSignInUsername] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
   const [isSignInPasswordSecure, setIsSignInPasswordSecure] = useState(true);
-  const [signUpUsername, setSignUpUsername] = useState(''); 
+  const [signUpUsername, setSignUpUsername] = useState('');
   const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -32,13 +32,17 @@ export default function AuthScreen() {
   const onSignIn = async () => {
     try {
       const userCredential = await login(signInUsername, signInPassword);
-      
-      if(userCredential){
-        // TODO store access token and use it somehow
-        Alert.alert('Login Success', `Welcome back, ${signInUsername}!, ${userCredential.expiration}`);
-        AsyncStorage.setItem("access_token", userCredential.token).then(()=> router.replace('/home'));
-      } 
 
+      if (userCredential) {
+        // TODO store access token and use it somehow
+        Alert.alert(
+          'Login Success',
+          `Welcome back, ${signInUsername}!, ${userCredential.expiration}`,
+        );
+        AsyncStorage.setItem('access_token', userCredential.token).then(() =>
+          router.replace('/home'),
+        );
+      }
     } catch (error: any) {
       Alert.alert('Login Failed', error.message);
     }
@@ -51,13 +55,9 @@ export default function AuthScreen() {
     }
 
     try {
-      const userCredential = await register(
-        signUpUsername,
-        signUpEmail,
-        signUpPassword
-      );
+      const userCredential = await register(signUpUsername, signUpEmail, signUpPassword);
 
-      if(userCredential){
+      if (userCredential) {
         Alert.alert('Success!', `Account created for ${signUpUsername}. Please sign in.`);
         setActiveTab('signin');
       }
@@ -136,12 +136,9 @@ export default function AuthScreen() {
                 </Pressable>
               </>
             ) : (
-
               <>
                 <Text style={styles.formTitle}>Create your account</Text>
-                <Text style={styles.formSubtitle}>
-                  Enter your information and join TextbookAI
-                </Text>
+                <Text style={styles.formSubtitle}>Enter your information and join TextbookAI</Text>
 
                 <Text style={styles.label}>Username</Text>
                 <View style={styles.inputWrapper}>

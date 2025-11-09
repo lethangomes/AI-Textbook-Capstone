@@ -5,12 +5,11 @@ import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function HomeScreen() {
-
   const handleLogout = () => {
-    AsyncStorage.removeItem("access_token").then(() => {
-      router.replace("/login");
-    })
-  }
+    AsyncStorage.removeItem('access_token').then(() => {
+      router.replace('/login');
+    });
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -28,7 +27,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#121212', 
+    backgroundColor: '#121212',
   },
   container: {
     flex: 1,
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#FFFFFF', 
+    color: '#FFFFFF',
     marginBottom: 16,
   },
   subtitle: {

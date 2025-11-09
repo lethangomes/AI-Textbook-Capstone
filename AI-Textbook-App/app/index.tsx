@@ -1,26 +1,26 @@
 import { Text, View, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
 import { router } from 'expo-router';
 
 export default function Index() {
-    useEffect(() => {
-        const token =  AsyncStorage.getItem("access_token").then((token) => {
-            if(token){
-                //signed in
-                router.replace('/home');
-            } else {
-                // not signed in
-                router.replace('/login');
-            }
-        })
-    }, [])
+  useEffect(() => {
+    AsyncStorage.getItem('access_token').then((token) => {
+      if (token) {
+        //signed in
+        router.replace('/home');
+      } else {
+        // not signed in
+        router.replace('/login');
+      }
+    });
+  }, []);
 
-    return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Home screen</Text>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Home screen</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

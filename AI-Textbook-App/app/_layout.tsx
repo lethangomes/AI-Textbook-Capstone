@@ -11,8 +11,8 @@ export default function RootLayout() {
           title: 'Home',
           headerStyle: { backgroundColor: '#1C1C1E' },
           headerTintColor: '#FFFFFF',
-          headerLeft: () => null, 
-          gestureEnabled: false, 
+          headerLeft: () => null,
+          gestureEnabled: false,
         }}
       />
     </Stack>
