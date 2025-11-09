@@ -13,55 +13,35 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { login } from '../api/login/loginApi';
-
-import { initializeApp } from 'firebase/app';
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from 'firebase/auth';
-const firebaseConfig = {
-  apiKey: "AIzaSyDzWMOhboHKYOhNZJS4fHapGQnZoPuVqvk",
-  authDomain: "ai-textbook-capstone.firebaseapp.com",
-  projectId: "ai-textbook-capstone",
-  storageBucket: "ai-textbook-capstone.firebasestorage.app",
-  messagingSenderId: "540271781281",
-  appId: "1:540271781281:web:2f3dfa3c789a010da657e0",
-  measurementId: "G-ZNNRQLGV3C"
-};
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+import { login, register } from '../api/login/loginApi';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function AuthScreen() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<'signin' | 'signup'>('signin');
-  const [signInEmail, setSignInEmail] = useState('');
+  const [signInUsername, setSignInUsername] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
   const [isSignInPasswordSecure, setIsSignInPasswordSecure] = useState(true);
   const [signUpUsername, setSignUpUsername] = useState(''); 
-  const [email, setEmail] = useState('');
+  const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isSignUpPasswordSecure, setIsSignUpPasswordSecure] = useState(true);
   const [isConfirmPasswordSecure, setIsConfirmPasswordSecure] = useState(true);
 
   const onSignIn = async () => {
-
-    login(signInEmail, signInPassword);
-    // try {
-    //   const userCredential = await signInWithEmailAndPassword(
-    //     auth,
-    //     signInEmail,
-    //     signInPassword
-    //   );
+    try {
+      const userCredential = await login(signInUsername, signInPassword);
       
-    //   Alert.alert('Login Success', `Welcome back, ${userCredential.user.email}!`);
-    //   router.replace('/home');
+      if(userCredential){
+        // TODO store access token and use it somehow
+        Alert.alert('Login Success', `Welcome back, ${signInUsername}!, ${userCredential.expiration}`);
+        AsyncStorage.setItem("access_token", userCredential.token).then(()=> router.replace('/home'));
+      } 
 
-    // } catch (error: any) {
-    //   Alert.alert('Login Failed', error.message);
-    // }
+    } catch (error: any) {
+      Alert.alert('Login Failed', error.message);
+    }
   };
 
   const onCreateAccount = async () => {
@@ -71,14 +51,16 @@ export default function AuthScreen() {
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
+      const userCredential = await register(
+        signUpUsername,
+        signUpEmail,
         signUpPassword
       );
-      Alert.alert('Success!', `Account created for ${userCredential.user.email}. Please sign in.`);
-      setActiveTab('signin');
-      
+
+      if(userCredential){
+        Alert.alert('Success!', `Account created for ${signUpUsername}. Please sign in.`);
+        setActiveTab('signin');
+      }
     } catch (error: any) {
       Alert.alert('Sign Up Failed', error.message);
     }
@@ -114,15 +96,15 @@ export default function AuthScreen() {
             {activeTab === 'signin' ? (
               <>
                 <Text style={styles.formTitle}>Welcome back</Text>
-                <Text style={styles.formSubtitle}>Enter your email and password</Text>
-                <Text style={styles.label}>Email</Text>
+                <Text style={styles.formSubtitle}>Enter your username and password</Text>
+                <Text style={styles.label}>Username</Text>
                 <View style={styles.inputWrapper}>
                   <TextInput
                     style={styles.input}
-                    placeholder="Enter your email"
+                    placeholder="Enter your username"
                     placeholderTextColor="#777"
-                    value={signInEmail}
-                    onChangeText={setSignInEmail}
+                    value={signInUsername}
+                    onChangeText={setSignInUsername}
                     autoCapitalize="none"
                     keyboardType="email-address"
                   />
@@ -161,7 +143,7 @@ export default function AuthScreen() {
                   Enter your information and join TextbookAI
                 </Text>
 
-                <Text style={styles.label}>Username (optional)</Text>
+                <Text style={styles.label}>Username</Text>
                 <View style={styles.inputWrapper}>
                   <TextInput
                     style={styles.input}
@@ -179,8 +161,8 @@ export default function AuthScreen() {
                     style={styles.input}
                     placeholder="Enter your email"
                     placeholderTextColor="#777"
-                    value={email}
-                    onChangeText={setEmail}
+                    value={signUpEmail}
+                    onChangeText={setSignUpEmail}
                     keyboardType="email-address"
                     autoCapitalize="none"
                   />
