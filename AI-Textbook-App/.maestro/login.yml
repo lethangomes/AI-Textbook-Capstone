@@ -1,0 +1,12 @@
+# this is an example test to see if maestro is working
+
+appId: com.aitextbookcapstone.AITextbookApp
+---
+- launchApp
+- tapOn: "Enter your username"
+- inputText: "testmobile"
+- tapOn: "Enter your password"
+- inputText: "password"
+- tapOn: "Log In"
+- assertVisible: "Welcome!"
+- tapOn: "Log out"

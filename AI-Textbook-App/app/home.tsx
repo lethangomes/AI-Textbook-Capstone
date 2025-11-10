@@ -19,7 +19,7 @@ export default function HomeScreen() {
         <Text style={styles.subtitle}>You are successfully logged in.</Text>
       </View>
       <Button title="Test persistence" onPress={() => router.navigate('/')}></Button>
-      <Button title="logout" onPress={handleLogout}></Button>
+      <Button title="Log out" onPress={handleLogout}></Button>
     </SafeAreaView>
   );
 }

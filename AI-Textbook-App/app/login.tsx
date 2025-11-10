@@ -34,11 +34,6 @@ export default function AuthScreen() {
       const userCredential = await login(signInUsername, signInPassword);
 
       if (userCredential) {
-        // TODO store access token and use it somehow
-        Alert.alert(
-          'Login Success',
-          `Welcome back, ${signInUsername}!, ${userCredential.expiration}`,
-        );
         AsyncStorage.setItem('access_token', userCredential.token).then(() =>
           router.replace('/home'),
         );
@@ -132,7 +127,7 @@ export default function AuthScreen() {
                   </Pressable>
                 </View>
                 <Pressable style={styles.button} onPress={onSignIn}>
-                  <Text style={styles.buttonText}>Sign In</Text>
+                  <Text style={styles.buttonText}>Log In</Text>
                 </Pressable>
               </>
             ) : (
