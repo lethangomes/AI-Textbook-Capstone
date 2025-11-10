@@ -21,8 +21,6 @@ jobs:
           
       - name: build app
         run: npm install
-            npx expo prebuild 
-            cd AI-Textbook-App/android 
 
       - name: Enable KVM
         run: |
