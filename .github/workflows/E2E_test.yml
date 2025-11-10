@@ -18,6 +18,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
            node-version: '18'
+          
+      - name: build app
+        run: npm install
+            npx expo prebuild 
+            cd AI-Textbook-App/android 
 
       - name: Enable KVM
         run: |
@@ -46,11 +51,6 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
-
-      - name: build app
-        run: npm install
-            npx expo prebuild 
-            cd AI-Textbook-App/android 
 
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2
