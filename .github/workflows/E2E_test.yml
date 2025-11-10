@@ -19,8 +19,11 @@ jobs:
         with:
            node-version: '18'
           
-      - name: build app
+      - name: Install dependencies
         run: npm install
+
+      - name: build app
+        run: npx expo prebuild
 
       - name: Enable KVM
         run: |
@@ -57,9 +60,8 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: cd android && ./gradlew assembleDebug 
+          script: ls && cd android && ./gradlew assembleDebug &&
             adb install app/build/outputs/apk/debug/app-debug.apk # Install to emulator
-            #MOVE THIS TO BEFORE THE EMULATOR AND JUST CD INTO ANDROID AND RUN GRADLEW
 # jobs:
 #   test:
 #     runs-on: ubuntu-latest
