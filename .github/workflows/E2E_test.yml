@@ -63,7 +63,7 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: cd AI-Textbook-App && ls && cd android && ./gradlew assembleDebug &&
+          script: cd AI-Textbook-App && ls && cd android && ./gradlew assembleDebug --warning-mode=all &&
             adb install app/build/outputs/apk/debug/app-debug.apk # Install to emulator
         
       - name : run tests
