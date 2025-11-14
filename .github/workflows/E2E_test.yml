@@ -26,7 +26,7 @@ jobs:
         run: npx expo prebuild
 
       - name: Install Maestro CLI
-        run: curl -Ls "https://get.maestro.mobile.dev" | bash
+        run: curl -Ls "https://get.maestro.mobile.dev" | bash && export PATH="$PATH":"$HOME/.maestro/bin"
 
       - name: Enable KVM
         run: |
