@@ -44,6 +44,3 @@ app-example
 
 #environment file
 .env
-
-# maestro results
-maestro-results/*
