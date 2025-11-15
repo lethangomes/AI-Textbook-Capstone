@@ -3,4 +3,5 @@
 appId: com.aitextbookcapstone.AITextbookApp
 ---
 - launchApp
+- takeScreenshot: maestro-results/home
 - assertVisible: 'Welcome!'
