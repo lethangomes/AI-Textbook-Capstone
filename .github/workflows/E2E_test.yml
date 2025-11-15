@@ -67,7 +67,7 @@ jobs:
             adb install app/build/outputs/apk/debug/app-debug.apk # Install to emulator
         
       - name : run tests
-        run: maestro test .maestro/
+        run: $HOME/.maestro/bin/maestro test .maestro/
 
       
 # jobs:
