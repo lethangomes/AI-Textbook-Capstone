@@ -64,7 +64,7 @@ jobs:
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: cd AI-Textbook-App && ls && cd android && ./gradlew assembleDebug --warning-mode=all &&
-            adb install app/build/outputs/apk/debug/app-debug.apk && $HOME/.maestro/bin/maestro test ../.maestro/ --output ../maestro-results/report.xml # Install to emulator maestro test e2e/ 
+            adb install app/build/outputs/apk/debug/app-debug.apk && $HOME/.maestro/bin/maestro test ../.maestro/ --format junit --output ../maestro-results/report.xml # Install to emulator maestro test e2e/ 
 
       - name: Upload test results (optional)
         uses: actions/upload-artifact@v4
