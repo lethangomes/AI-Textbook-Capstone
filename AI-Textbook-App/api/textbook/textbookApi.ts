@@ -1,6 +1,10 @@
 const BACKEND_URL = process.env.EXPO_PUBLIC_API_BASE_URL
 
+// Requests textbooks from api. Returns null if error occurs
 export async function loadTextbooks(authorization: string) {
+  if(!authorization || authorization === ''){
+    return null;
+  }
   try {
     const upstream = `${BACKEND_URL}/api/textbooks`;
     const token = authorization;
