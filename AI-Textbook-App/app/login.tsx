@@ -34,9 +34,19 @@ export default function AuthScreen() {
       const userCredential = await login(signInUsername, signInPassword);
 
       if (userCredential) {
+        // Save access token
         AsyncStorage.setItem('access_token', userCredential.token).then(() =>
-          router.replace('/home'),
-        );
+          // Save user name
+          AsyncStorage.setItem('username', signInUsername).then(() => {
+            router.replace('/home');
+          }).catch((reason) =>{
+            // failed to save user name
+            Alert.alert('Failed to save user login', reason);
+          })
+        ).catch((reason) => {
+          // failed to save access token
+          Alert.alert('Failed to save user login', reason);
+        });
       }
     } catch (error: any) {
       Alert.alert('Login Failed', error.message);
