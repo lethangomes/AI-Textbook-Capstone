@@ -8,5 +8,5 @@ appId: com.aitextbookcapstone.AITextbookApp
 - tapOn: "Enter your password"
 - inputText: "password"
 - tapOn: "Log In"
-- assertVisible: "Welcome!"
+- assertVisible: "You are successfully logged in."
 - tapOn: "Log out"
