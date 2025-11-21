@@ -1,6 +1,7 @@
-import { addTextbookToLibrary } from "@/api/textbook/addTextbookApi";
+import { ADD_TEXTBOOK_INTERNAL_ERROR, ADD_TEXTBOOK_INVALID_AUTHORIZATION, ADD_TEXTBOOK_INVALID_CODE, ADD_TEXTBOOK_NETWORK_ERROR, ADD_TEXTBOOK_SUCCESS, addTextbookToLibrary } from "@/api/textbook/addTextbookApi";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
-import { Modal, View, StyleSheet, Text, TextInput, TouchableHighlight, Button } from "react-native";
+import { Modal, View, StyleSheet, Text, TextInput, TouchableHighlight, Button, Alert } from "react-native";
 
 type Props = {
     isVisible: boolean;
@@ -11,9 +12,33 @@ export default function AddTextbookOverlay({isVisible, onClose}: Props) {
     const [textbookCode, setTextbookCode] = useState('');
 
     const submit = async () => {
-        let ret = await addTextbookToLibrary(textbookCode);
+        // get access token
+        let token = await AsyncStorage.getItem('access_token');
+        if(!token){
+            Alert.alert('Failed to retrieve access token');
+            return;
+        }
+
+        let ret = await addTextbookToLibrary(textbookCode, token);
         console.log(ret);
-        if(ret){
+        switch(ret){
+            case ADD_TEXTBOOK_SUCCESS:
+                onClose(true);
+                break;
+            case ADD_TEXTBOOK_INVALID_AUTHORIZATION:
+                Alert.alert('Failed to Add Textbook: Invalid Authorization');
+                break;
+            case ADD_TEXTBOOK_NETWORK_ERROR:
+                Alert.alert('Failed to Add Textbook: Network Error');
+                break;
+            case ADD_TEXTBOOK_INVALID_CODE:
+                Alert.alert('Textbook Code Invalid. Please enter a valid 6 digit code');
+                break;
+            case ADD_TEXTBOOK_INTERNAL_ERROR:
+                Alert.alert('Failed to Add Textbook: Internal Error');
+                break;
+        }
+        if(ret === ADD_TEXTBOOK_SUCCESS){
             onClose(true);
         }
     }

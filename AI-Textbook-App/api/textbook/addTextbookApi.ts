@@ -1,26 +1,28 @@
 // Calls backend to attempt to add a textbook with a given code
-// to the currently logged in user. Returns true if successful, 
+// to the currently logged in user. Returns a number between
+// 0 and 3. Meanings described below
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert } from "react-native"
+export const ADD_TEXTBOOK_SUCCESS = 0;
+export const ADD_TEXTBOOK_INVALID_CODE = 1;
+export const ADD_TEXTBOOK_INVALID_AUTHORIZATION = 2;
+export const ADD_TEXTBOOK_NETWORK_ERROR = 3;
+export const ADD_TEXTBOOK_INTERNAL_ERROR = 4;
 
-// false otherwise.
-export async function addTextbookToLibrary(textbookCode: string): Promise<boolean> {
+export async function addTextbookToLibrary(textbookCode: string, token: string): Promise<number> {
     try {
         const code: string = textbookCode.toUpperCase().trim()
 
         if (!code || code.length !== 6) {
-            Alert.alert("Invalid code", "Should be 6 characters");
-            return false;
+            console.error("Invalid code: Should be 6 characters");
+            return ADD_TEXTBOOK_INVALID_CODE;
         }
 
         const BACKEND_URL = process.env.EXPO_PUBLIC_API_BASE_URL
 
         // Get auth token
-        const token = await AsyncStorage.getItem('access_token');
         if(!token){
-            Alert.alert("Invalid token");
-            return false;
+            console.error("Invalid token");
+            return ADD_TEXTBOOK_INVALID_AUTHORIZATION;
         }
 
         // Make request to backend
@@ -39,8 +41,8 @@ export async function addTextbookToLibrary(textbookCode: string): Promise<boolea
         try {
             data = text ? JSON.parse(text) : {}
         } catch (e) {
-            Alert.alert("Invalid response from backend");
-            return false;
+            console.error("Invalid response from backend");
+            return ADD_TEXTBOOK_NETWORK_ERROR;
         }
 
         if (!upstream.ok) {
@@ -48,24 +50,24 @@ export async function addTextbookToLibrary(textbookCode: string): Promise<boolea
             const status = upstream.status === 404 ? 200 : upstream.status
             // If backend says not found, we treat as graceful invalid code with 200
             if (upstream.status === 404) {
-                Alert.alert("Invalid Code");
-                return false;
+                console.error("Invalid Code");
+                return ADD_TEXTBOOK_INVALID_CODE;
             }
 
             // Unauthorized access
             if (upstream.status === 401) {
-                Alert.alert("Error: Unauthorized access. Trying logging out and logging back in.");
-                return false;
+                console.error("Error: Unauthorized access. Trying logging out and logging back in.");
+                return ADD_TEXTBOOK_INVALID_AUTHORIZATION;
             }
-            return false;
+
+            // Call all other errors "network errors"
+            return ADD_TEXTBOOK_NETWORK_ERROR;
         }
 
-        console.log(text);
-
-        return true;
+        return ADD_TEXTBOOK_SUCCESS;
   } catch (e: any) {
-    Alert.alert(e?.message || "Unexpected error");
-    return false;
+    console.error(e?.message || "Unexpected error");
+    return ADD_TEXTBOOK_INTERNAL_ERROR;
   }
 }
 

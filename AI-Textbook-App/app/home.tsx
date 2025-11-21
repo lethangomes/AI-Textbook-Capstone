@@ -79,47 +79,45 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar style="light" />
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={styles.title}>Welcome {username}!</Text>
-          <Text style={styles.subtitle}>You are successfully logged in.</Text>
-        </View>
-        <View style={styles.textbookContainer}>
-          {textbooks.map((textbook: Textbook) => {
-            return (
-              <View style={styles.textbook} key={textbook.id}>
-                <Text style={styles.title}>{textbook.title}</Text>
+    <ScrollView style={styles.scrollView}>
+      <SafeAreaView style={styles.safeArea}>
+        <StatusBar style="light" />
+          <View style={styles.container}>
+            <Text style={styles.title}>Welcome {username}!</Text>
+            <Text style={styles.subtitle}>You are successfully logged in.</Text>
+          </View>
+          <View style={styles.textbookContainer}>
+            {textbooks.map((textbook: Textbook) => {
+              return (
+                <View style={styles.textbook} key={textbook.id}>
+                  <Text style={styles.title}>{textbook.title}</Text>
 
-                <Text style={styles.subtitle}>{textbook.subject}</Text>
-                <Text style={styles.subtitle}>By {textbook.author}</Text>
+                  <Text style={styles.subtitle}>{textbook.subject}</Text>
+                  <Text style={styles.subtitle}>By {textbook.author}</Text>
+                </View>
+              );
+            })}
+
+            <TouchableHighlight onPress={addTextbook} underlayColor="#4a4a4aff">
+              <View style={styles.addTextbook} >
+                <Text style={styles.title}>Add new textbook</Text>
               </View>
-            );
-          })}
-
-          <TouchableHighlight onPress={addTextbook} underlayColor="#4a4a4aff">
-            <View style={styles.addTextbook} >
-              <Text style={styles.title}>Add new textbook</Text>
-            </View>
-          </TouchableHighlight>
-          <AddTextbookOverlay 
-            isVisible={addTextbookOverlayVisibile}
-            onClose={onAddTextbookSubmit}/>
-        </View>
-        <Button title="Test persistence" onPress={() => router.navigate('/')}></Button>
-        <Button title="Log out" onPress={logout}></Button>
-      </ScrollView>
-      
-      
-    </SafeAreaView>
+            </TouchableHighlight>
+            <AddTextbookOverlay 
+              isVisible={addTextbookOverlayVisibile}
+              onClose={onAddTextbookSubmit}/>
+          </View>
+          <Button title="Test persistence" onPress={() => router.navigate('/')}></Button>
+          <Button title="Log out" onPress={logout}></Button>
+        
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#121212',
   },
   container: {
     alignItems: 'center',
@@ -166,4 +164,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#A0A0A0',
   },
+  scrollView: {
+    backgroundColor: '#121212',
+  }
 });
