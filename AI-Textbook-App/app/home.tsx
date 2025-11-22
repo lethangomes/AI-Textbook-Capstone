@@ -1,4 +1,12 @@
-import { View, Text, StyleSheet, Button, Alert, TouchableHighlight, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Alert,
+  TouchableHighlight,
+  ScrollView,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { router } from 'expo-router';
@@ -62,54 +70,53 @@ export default function HomeScreen() {
           console.log(error.message);
         });
     }
-  })
-  
+  });
 
   const addTextbook = () => {
     setAddTextbookOverlayVisibile(true);
-  }
+  };
 
   const onAddTextbookSubmit = (updated: boolean) => {
     // update textbooks if necesary
-    if(updated){
+    if (updated) {
       setHasTextbooks(false);
     }
 
     setAddTextbookOverlayVisibile(false);
-  }
+  };
 
   return (
     <ScrollView style={styles.scrollView}>
       <SafeAreaView style={styles.safeArea}>
         <StatusBar style="light" />
-          <View style={styles.container}>
-            <Text style={styles.title}>Welcome {username}!</Text>
-            <Text style={styles.subtitle}>You are successfully logged in.</Text>
-          </View>
-          <View style={styles.textbookContainer}>
-            {textbooks.map((textbook: Textbook) => {
-              return (
-                <View style={styles.textbook} key={textbook.id}>
-                  <Text style={styles.title}>{textbook.title}</Text>
+        <View style={styles.container}>
+          <Text style={styles.title}>Welcome {username}!</Text>
+          <Text style={styles.subtitle}>You are successfully logged in.</Text>
+        </View>
+        <View style={styles.textbookContainer}>
+          {textbooks.map((textbook: Textbook) => {
+            return (
+              <View style={styles.textbook} key={textbook.id}>
+                <Text style={styles.title}>{textbook.title}</Text>
 
-                  <Text style={styles.subtitle}>{textbook.subject}</Text>
-                  <Text style={styles.subtitle}>By {textbook.author}</Text>
-                </View>
-              );
-            })}
-
-            <TouchableHighlight onPress={addTextbook} underlayColor="#4a4a4aff">
-              <View style={styles.addTextbook} >
-                <Text style={styles.title}>Add new textbook</Text>
+                <Text style={styles.subtitle}>{textbook.subject}</Text>
+                <Text style={styles.subtitle}>By {textbook.author}</Text>
               </View>
-            </TouchableHighlight>
-            <AddTextbookOverlay 
-              isVisible={addTextbookOverlayVisibile}
-              onClose={onAddTextbookSubmit}/>
-          </View>
-          <Button title="Test persistence" onPress={() => router.navigate('/')}></Button>
-          <Button title="Log out" onPress={logout}></Button>
-        
+            );
+          })}
+
+          <TouchableHighlight onPress={addTextbook} underlayColor="#4a4a4aff">
+            <View style={styles.addTextbook}>
+              <Text style={styles.title}>Add new textbook</Text>
+            </View>
+          </TouchableHighlight>
+          <AddTextbookOverlay
+            isVisible={addTextbookOverlayVisibile}
+            onClose={onAddTextbookSubmit}
+          />
+        </View>
+        <Button title="Test persistence" onPress={() => router.navigate('/')}></Button>
+        <Button title="Log out" onPress={logout}></Button>
       </SafeAreaView>
     </ScrollView>
   );
@@ -166,5 +173,5 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     backgroundColor: '#121212',
-  }
+  },
 });
