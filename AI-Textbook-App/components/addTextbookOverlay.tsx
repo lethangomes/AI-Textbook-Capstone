@@ -50,15 +50,16 @@ export default function AddTextbookOverlay({isVisible, onClose}: Props) {
             <Modal animationType="fade" transparent={true} visible={isVisible}>
                 <View style={styles.modal_content}>
                     <View style={styles.form}>
-                        <Text style={styles.form_label}> Add textbook </Text>
+                        <Text style={styles.form_label}>Add Textbook</Text>
                         <TextInput
                             style={styles.input}
-                            placeholder="Enter Textbook code(6 digits)"
+                            placeholder="Enter Textbook Code(6 digits)"
                             placeholderTextColor="#777"
                             value={textbookCode}
                             onChangeText={setTextbookCode}
                             autoCapitalize="none"
                             maxLength={6}
+                            id="textbook-code"
                             />
                         <View style={styles.button_bar}>
                             <Button title="Submit" onPress={submit}></Button>
